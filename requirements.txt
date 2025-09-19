@@ -1,0 +1,5 @@
+# Flask para API
+flask==3.0.0
+
+# OCR
+easyocr==1.7.0
