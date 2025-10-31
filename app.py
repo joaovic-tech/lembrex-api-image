@@ -39,20 +39,22 @@ def hello():
     </html>
     '''
 
-# Pegar o body em formato json
+# Receber imagens via multipart/form-data
 @app.route('/api', methods=['POST'])
 def api():
-    data = request.get_json()
-    if not data or "text" not in data or "images" not in data:
-        return jsonify({"success": False, "message": "Dados inválidos"}), 400
-    if len(data["images"]) < 2:
-        return jsonify({"success": False, "message": "Duas imagens são necessárias"}), 400
+    # Verificar se os campos necessários estão presentes
+    if 'text' not in request.form:
+        return jsonify({"success": False, "message": "Campo 'text' é obrigatório"}), 400
+    
+    if 'image1' not in request.files or 'image2' not in request.files:
+        return jsonify({"success": False, "message": "Duas imagens são necessárias (image1 e image2)"}), 400
 
-    text = request.json.get('text')
-    images = request.json.get('images')
+    text = request.form.get('text')
+    image1_bytes = request.files['image1'].read()
+    image2_bytes = request.files['image2'].read()
 
-    find_text_remedy = ocr(images[0], text)
-    find_text_remedy_user = ocr(images[1], text)
+    find_text_remedy = ocr(image1_bytes, text)
+    find_text_remedy_user = ocr(image2_bytes, text)
 
     if find_text_remedy.get("result") and find_text_remedy_user.get("result"):
         return jsonify({
