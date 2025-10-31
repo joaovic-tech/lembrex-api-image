@@ -7,8 +7,37 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
-
+    return '''
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LEMBREX API IMAGE</title>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f2f5;
+                color: #333;
+                text-align: center;
+            }
+            a { color: #007BFF; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Conectado a LEMBREX API IMAGE</h1>
+            <p><a href="https://github.com/joaovic-tech/lembrex-api-image/blob/main/README.md" target="_blank" rel="noopener noreferrer">Acessar Documentação</a></p>
+        </div>
+    </body>
+    </html>
+    '''
 
 # Pegar o body em formato json
 @app.route('/api', methods=['POST'])
