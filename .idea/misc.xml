@@ -4,4 +4,5 @@
     <option name="show" value="ASK" />
     <option name="description" value="" />
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" project-jdk-name="Python 3.13 virtualenv at ~/github/lembrex-api-image/venv" project-jdk-type="Python SDK" />
 </project>
